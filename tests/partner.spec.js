@@ -10,6 +10,7 @@ test('Get case details', async ({ request }) => {
   // Parse the response body as JSON
   const caseDetails = await response.json();
 
-console.log(JSON.stringify(caseDetails, null, 2));
+//console.log(JSON.stringify(caseDetails, null, 2));
+console.log(caseDetails);
 
 });
