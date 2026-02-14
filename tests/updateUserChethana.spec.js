@@ -127,6 +127,13 @@ function askUser(question) {
           "USERGROUP_SITE_VISIT",
           "USERGROUP_OPS_USER"
     ],
+    audit:[  
+  "USERGROUP_OPS_PERFORMER",
+  "USERGROUP_COMMON",
+  "USERGROUP_AUDIT",
+  "USERGROUP_OPS_USER"
+ ],
+
     all: [
       "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_IA_ACCREDITATION_RESEARCH",
@@ -198,6 +205,7 @@ function askUser(question) {
     vendorcreation: "PROCESS_VENDOR_CREATION",
     vendorapprover: "PROCESS_VENDOR_APPROVAL",
     sitevisit: "PROCESS_SITE_VISIT",
+    audit:"PROCESS_AUDIT",
     all: "PROCESS_VALIDATION"
   };
 
