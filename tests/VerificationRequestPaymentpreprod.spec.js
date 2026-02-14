@@ -1,10 +1,10 @@
 import { test, expect, request as baseRequest } from '@playwright/test';
  
-const verificationRequestId = 'VerificationRequest@6a7b0cdf-ccec-46ce-8a3e-b59806c6a41b';
+const verificationRequestId = 'VerificationRequest@56b95226-04cf-4c02-96ed-280df629d3f2';
 //Get Verification request payment by vrid
 test('Check verification request payment by ID', async ({ request }) => {
   
-  const url = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request-payment/index/${verificationRequestId}`;
+  const url = `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request-payment/index/${verificationRequestId}`;
 
   const response = await request.get(url);
   const data = await response.json();
@@ -14,7 +14,7 @@ test('Check verification request payment by ID', async ({ request }) => {
 });
 // Get verification request by vrid
 test('Get Verification Request' , async({ request })=>{
-const url= `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request/${verificationRequestId}`;
+const url= `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request/${verificationRequestId}`;
 const response = await request.get(url);
 const data= await response.json();
   expect(response.status()).toBe(200);
@@ -26,7 +26,7 @@ const data= await response.json();
 test('Fetch verification request and update payment status to Success', async ({ request }) => {
 
   // Step 1: Get verification request details
-const getUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request-payment/index/${verificationRequestId}`;
+const getUrl = `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request-payment/index/${verificationRequestId}`;
   const getResponse = await request.get(getUrl);
   expect(getResponse.status()).toBe(200);
 
@@ -37,7 +37,7 @@ const getUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1
   const clientContractId = entity.clientContractId;
 
   // Step 2: Send PUT request to update payment status
-  const putUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request-payment/${verificationRequestId}`;
+  const putUrl = `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request-payment/${verificationRequestId}`;
   const payload = {
     verificationRequestId,
     applicantId,
@@ -65,7 +65,7 @@ const getUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1
 
 test('Update all payment contracts to SUCCESS', async ({ request }) => {
   // Step 1: Fetch verification request payment
-  const fetchUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request-payment/index/${verificationRequestId}`;
+  const fetchUrl = `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request-payment/index/${verificationRequestId}`;
   const fetchResponse = await request.get(fetchUrl);
   expect(fetchResponse.status()).toBe(200);
 
@@ -78,7 +78,7 @@ test('Update all payment contracts to SUCCESS', async ({ request }) => {
 
   // Step 2: Loop through and update each contract
   for (const contractId of contracts) {
-    const updateUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/core-verification-data-structure-service/verification-request-payment-contracts/${contractId}/?updateType=ADD`;
+    const updateUrl = `http://core-v-nlbC3-eLKlgv7cteZ5-b9e775900a07bff4.elb.ap-south-1.amazonaws.com/verification-request-payment-contracts/${contractId}/?updateType=ADD`;
 
     const updateResponse = await request.put(updateUrl, {
       data: {
@@ -94,11 +94,12 @@ test('Update all payment contracts to SUCCESS', async ({ request }) => {
     console.log(`Updated ${contractId}:`, updateData.message);
   }
 });
+
 // prevalidity Integrity check
 
 test('Trigger pre-validation-integrity-check API', async () => {
   const request = await baseRequest.newContext();
-    const url = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-workflow-engine/verification-request/${verificationRequestId}/pre-validation-integrity-check`;
+    const url = `http://verifi-nlbC3-fdG3aGSbkH7t-b99f8e0e7ddd5c6b.elb.ap-south-1.amazonaws.com/verification-request/${verificationRequestId}/pre-validation-integrity-check`;
     const response = await request.fetch(url, {
     method: 'PATCH',
     headers: {

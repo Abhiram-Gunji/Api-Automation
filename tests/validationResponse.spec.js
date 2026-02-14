@@ -290,6 +290,7 @@ test('POST validation response based on componentTypeId', async ({ request }) =>
             type: "VALIDATION"
           }
         ]
+
       };
 
         eduPostRes = await request.post(

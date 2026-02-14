@@ -1,7 +1,7 @@
 const { request } = require('@playwright/test');
 const readline = require('readline');
 
-//Staging
+// //Staging
 //const OPS_USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
 //const USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
 //Preprod
@@ -29,7 +29,7 @@ function askUser(question) {
 
   const userGroups = {
     validation: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_VALIDATION",
       "USERGROUP_OPS_USER"
@@ -38,95 +38,89 @@ function askUser(question) {
       "USERGROUP_COMMON",
       "USERGROUP_VERIFICATION",
       "USERGROUP_OPS_USER",
-      "USERGROUP_OPS_PERFORMER"
+      "USERGROUP_OPS_TEAM_LEADER"
     ],
     verificationqc: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_COMPONENT_QC",
       "USERGROUP_OPS_USER"
     ],
     reportqc: [
-       "USERGROUP_OPS_PERFORMER",
+       "USERGROUP_OPS_TEAM_LEADER",
        "USERGROUP_COMMON",
        "USERGROUP_REPORT_PUBLISHING",
        "USERGROUP_OPS_USER"
     ],
     iacreation: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_IA_RESEARCH",
       "USERGROUP_OPS_USER"
     ],
     iaapproval: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_IA_APPROVER",
       "USERGROUP_OPS_USER"
     ],
     accreditation: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_IA_ACCREDITATION_RESEARCH",
       "USERGROUP_OPS_USER"
     ],
     accreditationapproval: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_IA_ACCREDITATION_APPROVAL",
       "USERGROUP_OPS_USER"
     ],
     applicantsupport: [
-    "USERGROUP_OPS_PERFORMER",
+    "USERGROUP_OPS_TEAM_LEADER",
     "USERGROUP_COMMON",
     "USERGROUP_APPLICANT_SUPPORT",
     "USERGROUP_OPS_USER"
     ],
     clientcreation: [
-      "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_CLIENT_CREATION",
       "USERGROUP_OPS_USER"
     ],
     documenttransalation: [
-       "USERGROUP_OPS_PERFORMER",
+      "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_COMMON",
       "USERGROUP_DOCUMENT_TRANSLATOR",
       "USERGROUP_OPS_USER"
     ],
-     finance: [
-        "USERGROUP_OPS_PERFORMER",
+    finance: [
+        "USERGROUP_OPS_TEAM_LEADER",
         "USERGROUP_COMMON",
         "USERGROUP_FINANCE",
         "USERGROUP_OPS_USER"
     ],
     vendormapping: [
-        "USERGROUP_OPS_PERFORMER",
+        "USERGROUP_OPS_TEAM_LEADER",
         "USERGROUP_COMMON",
         "USERGROUP_VENDOR_MANAGEMENT",
         "USERGROUP_OPS_USER"
 
     ],
     vendorcreation: [
-        "USERGROUP_OPS_PERFORMER",
+        "USERGROUP_OPS_TEAM_LEADER",
         "USERGROUP_COMMON",
         "USERGROUP_VENDOR_CREATOR",
         "USERGROUP_OPS_USER"
 
     ],
     vendorapprover: [
-        "USERGROUP_OPS_PERFORMER",
+        "USERGROUP_OPS_TEAM_LEADER",
         "USERGROUP_COMMON",
         "USERGROUP_VENDOR_APPROVER",
         "USERGROUP_OPS_USER"
 
     ],
-    dataentry:[
-  "USERGROUP_OPS_PERFORMER",
-  "USERGROUP_COMMON",
-  "USERGROUP_CASE_CREATION_ENTRY",
-  "USERGROUP_OPS_USER"
- ],
     all: [
       "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_IA_ACCREDITATION_RESEARCH",
@@ -197,8 +191,7 @@ function askUser(question) {
     vendormapping: "PROCESS_VENDOR_MAPPING",
     vendorcreation: "PROCESS_VENDOR_CREATION",
     vendorapprover: "PROCESS_VENDOR_APPROVAL",
-    all: "PROCESS_VALIDATION",
-    dataentry: "PROCESS_DATA_ENTRY"
+    all: "PROCESS_VALIDATION"
   };
 
   if (!userGroups[input]) {
@@ -209,7 +202,7 @@ function askUser(question) {
   const selectedUserGroups = userGroups[input];
   const selectedProcessId = processIds[input];
 
-  //console.log(`\n🔄 Updating data for process: ${input}`);
+  console.log(`\n🔄 Updating data for process: ${input}`);
   console.log("➡️ User Groups:", selectedUserGroups);
   console.log("➡️ Process ID:", selectedProcessId);
 
@@ -311,7 +304,7 @@ function askUser(question) {
           'Content-Type': 'application/json'
         },
         data: {
-          "userLevel" :3,
+          "userLevel" : 2,
           skipValidation:'true'
         }
       }

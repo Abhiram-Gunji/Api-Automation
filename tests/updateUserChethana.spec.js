@@ -1,12 +1,14 @@
 const { request } = require('@playwright/test');
 const readline = require('readline');
 
-//Staging
-//const OPS_USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
-//const USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+// //Staging
+ const OPS_USER_API_URL = 'http://ops-se-nlbC3-TYjd2myKIokm-2b0080682c496557.elb.ap-south-1.amazonaws.com/opsuser/OpsUser@9e890d5c-c34d-4297-bab8-7f11382de6c1';
+ const USER_API_URL = 'http://user-s-nlbC3-srcrLynLyeVt-045da1d9d623053f.elb.ap-south-1.amazonaws.com/users/User@c71b4408-196b-413e-82ee-22e17e07efe1';
+
 //Preprod
-const OPS_USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
-const USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+//const OPS_USER_API_URL = 'http://ops-se-nlbC3-iWgQNJz9FMWu-a6584176b1bc0a86.elb.ap-south-1.amazonaws.com/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
+//const USER_API_URL = 'http://user-s-nlbC3-Gh3P0z27gphp-0a117a6992309b48.elb.ap-south-1.amazonaws.com/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+
 
 // Prompt for user input
 function askUser(question) {
@@ -121,12 +123,12 @@ function askUser(question) {
         "USERGROUP_OPS_USER"
 
     ],
-    dataentry:[
-  "USERGROUP_OPS_PERFORMER",
-  "USERGROUP_COMMON",
-  "USERGROUP_CASE_CREATION_ENTRY",
-  "USERGROUP_OPS_USER"
- ],
+    sitevisit: [
+          "USERGROUP_OPS_TEAM_LEADER",
+          "USERGROUP_COMMON",
+          "USERGROUP_SITE_VISIT",
+          "USERGROUP_OPS_USER"
+    ],
     all: [
       "USERGROUP_OPS_TEAM_LEADER",
       "USERGROUP_IA_ACCREDITATION_RESEARCH",
@@ -191,14 +193,14 @@ function askUser(question) {
     accreditation: "PROCESS_IA_ACCREDITATION_RESEARCH",
     accreditationapproval: "PROCESS_IA_ACCREDITATION_APPROVAL",
     applicantsupport: "PROCESS_APPLICANT_SUPPORT",
-    clientcreation: " PROCESS_CLIENT_CREATION",
+    clientcreation: "PROCESS_CLIENT_CREATION",
     documenttransalation: "PROCESS_DOCUMENT_TRANSLATION",
     finance: "PROCESS_FINANCE",
     vendormapping: "PROCESS_VENDOR_MAPPING",
     vendorcreation: "PROCESS_VENDOR_CREATION",
     vendorapprover: "PROCESS_VENDOR_APPROVAL",
-    all: "PROCESS_VALIDATION",
-    dataentry: "PROCESS_DATA_ENTRY"
+    sitevisit: "PROCESS_SITE_VISIT",
+    all: "PROCESS_VALIDATION"
   };
 
   if (!userGroups[input]) {
@@ -209,7 +211,7 @@ function askUser(question) {
   const selectedUserGroups = userGroups[input];
   const selectedProcessId = processIds[input];
 
-  //console.log(`\n🔄 Updating data for process: ${input}`);
+  console.log(`\n🔄 Updating data for process: ${input}`);
   console.log("➡️ User Groups:", selectedUserGroups);
   console.log("➡️ Process ID:", selectedProcessId);
 
@@ -311,7 +313,7 @@ function askUser(question) {
           'Content-Type': 'application/json'
         },
         data: {
-          "userLevel" :3,
+          "userLevel" : 2,
           skipValidation:'true'
         }
       }

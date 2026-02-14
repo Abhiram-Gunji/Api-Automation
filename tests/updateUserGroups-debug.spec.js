@@ -13,7 +13,7 @@ function askQuestion(query) {
 }
 
 test('update usergroups dynamically based on user input', async ({ request }) => {
-  const putUrl = 'http://user-s-nlbC3-srcrLynLyeVt-045da1d9d623053f.elb.ap-south-1.amazonaws.com/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+  const putUrl = 'http://user-s-nlbC3-Ff5O9dWwBJ3v-fb61e3ef46c2c14b.elb.ap-south-1.amazonaws.com/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
 
   // Prompt the user in the terminal
   const userInput = await askQuestion(
