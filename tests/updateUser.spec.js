@@ -2,11 +2,11 @@ const { request } = require('@playwright/test');
 const readline = require('readline');
 
 //Staging
-//const OPS_USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
-//const USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+const OPS_USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
+const USER_API_URL = 'http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
 //Preprod
-const OPS_USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
-const USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
+//const OPS_USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/ops-service/opsuser/OpsUser@c1ab025d-c52c-405c-b2a4-d8b5fbcdfb99';
+//const USER_API_URL = 'http://nginx--nlbC3-fo19N4Q4LZRb-761f631e132758db.elb.ap-south-1.amazonaws.com/user-service/users/User@1944b4ae-c9c2-486b-a557-779b9346dbde';
 
 // Prompt for user input
 function askUser(question) {
@@ -311,7 +311,7 @@ function askUser(question) {
           'Content-Type': 'application/json'
         },
         data: {
-          "userLevel" :3,
+          "userLevel" :0,
           skipValidation:'true'
         }
       }

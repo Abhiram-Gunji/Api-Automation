@@ -98,7 +98,7 @@ test('Update all payment contracts to SUCCESS', async ({ request }) => {
 
 test('Trigger pre-validation-integrity-check API', async () => {
   const request = await baseRequest.newContext();
-    const url = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-workflow-engine/verification-request/${verificationRequestId}/pre-validation-integrity-check`;
+    const url = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/verification-request/verification-request/${verificationRequestId}/pre-validation-integrity-check`;
     const response = await request.fetch(url, {
     method: 'PATCH',
     headers: {
