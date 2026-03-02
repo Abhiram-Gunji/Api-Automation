@@ -1,4 +1,4 @@
- name: API Automation
+name: API Automation
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
@@ -16,6 +17,11 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm install
-      - run: npx playwright install --with-deps
-      - run: npx playwright test
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Tests
+        run: npx playwright test
