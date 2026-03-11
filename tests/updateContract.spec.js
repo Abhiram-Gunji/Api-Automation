@@ -22,7 +22,7 @@ test('Append ComponentType@licensingExamination to multiple client contracts', a
     console.log(`\nProcessing Contract: ${clientContractId}`);
 
     // Step 1: Fetch existing contract
-    const getUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/client-contract-service/client-contract?id=${clientContractId}`;
+    const getUrl = `http://nginx--nlbc3-fo19n4q4lzrb-761f631e132758db.elb.ap-south-1.amazonaws.com/client-contract-service/client-contract?id=${clientContractId}`;
 
     const getResponse = await request.get(getUrl);
     expect(getResponse.status()).toBe(200);
@@ -43,7 +43,7 @@ test('Append ComponentType@licensingExamination to multiple client contracts', a
     }
 
     // Step 3: PATCH update
-    const patchUrl = `http://nginx--nlbC3-hjNa0pnRoiJ7-257492ea392d9b9b.elb.ap-south-1.amazonaws.com/client-contract-service/client-contract/${clientContractId}`;
+    const patchUrl = `http://nginx--nlbc3-fo19n4q4lzrb-761f631e132758db.elb.ap-south-1.amazonaws.com/client-contract-service/client-contract/${clientContractId}`;
 
     const patchResponse = await request.patch(patchUrl, {
       headers: {
