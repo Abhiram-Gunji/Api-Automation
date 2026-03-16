@@ -77,10 +77,11 @@ function askUser(question) {
       "USERGROUP_OPS_USER"
     ],
     applicantsupport: [
-    "USERGROUP_OPS_TEAM_LEADER",
-    "USERGROUP_COMMON",
-    "USERGROUP_APPLICANT_SUPPORT",
-    "USERGROUP_OPS_USER"
+     "USERGROUP_OPS_TEAM_LEADER",
+     "USERGROUP_COMMON",
+     "USERGROUP_APPLICANT_SUPPORT",
+     "USERGROUP_OPS_USER"
+
     ],
     clientcreation: [
       "USERGROUP_OPS_TEAM_LEADER",
