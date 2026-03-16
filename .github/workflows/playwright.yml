@@ -24,4 +24,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Tests
-        run: npx playwright test tests/updateContract.spec.js
+        run: npx playwright test tests/getById.spec.js
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
