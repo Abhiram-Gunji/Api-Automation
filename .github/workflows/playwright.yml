@@ -24,7 +24,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Tests
-        run: npx playwright test tests/getById.spec.js
+        run: npx playwright test tests/sample.spec.js
 
       - name: Upload Playwright Report
         if: always()
